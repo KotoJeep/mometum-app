@@ -1,0 +1,827 @@
+@font-face 
+	font-family: "Arial-MT"
+	src: url("../assets/fonts/Arial-MT.woff")
+
+* 
+	box-sizing: border-box
+	margin: 0
+	padding: 0
+
+$main-color: #42bdee
+
+body 
+	min-width: 480px
+	min-height: 100vh
+	font-family: "Arial", sans-serif
+	font-size: 16px
+	color: #fff
+	text-align: center
+	background:  center/cover, rgba(0, 0, 0, 0.5)
+	background-blend-mode: multiply
+	transition: background-image 1s ease-in-out
+
+.header 
+	display: flex
+	justify-content: space-between
+	align-items: flex-start
+	width: 100%
+	height: 30vh
+	min-height: 220px
+	padding: 20px
+
+.player
+  &-title 
+    opacity: 0.8
+  &-info
+    display: flex
+  &-controls 
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 120px
+    margin-bottom: 28px
+
+.progress 
+	margin-bottom: 28px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	min-height: 50px
+
+.duration
+  &-player 
+    position: relative
+    height: 4px
+    margin: 0 10px 0 20px
+    min-width: 180px
+    opacity: 0.8
+    cursor: pointer
+    background: linear-gradient(to right, #fff 0%, #fff 54%, rgba(255,255,255, .5) 54%, rgba(255,255,255, .5) 100%)
+    -webkit-appearance: none
+    &::-webkit-slider-thumb 
+      width: 10px
+      height: 10px
+      border-radius: 50%
+      -webkit-appearance: none
+      cursor: pointer
+  &-timer 
+    display: flex
+    color: #fff
+    font-size: 12px
+    user-select: none
+
+.timer 
+  min-width: 41px
+  &:after 
+    content: " / "
+    font-size: 12px
+    white-space: pre
+
+.volume 
+	margin-bottom: 28px
+	align-items: center
+	display: flex
+
+.mute-button 
+	display: flex
+	align-items: center
+	margin: 12px
+	width: 20px
+	height: 20px
+	background-image: url(../assets/svg/volume_on.svg)
+	background-repeat: no-repeat
+	background-position: center
+	background-color: transparent
+	background-size: contain
+	opacity: 0.8
+	transition: 0.3s
+	cursor: pointer
+
+.sound-volume 
+	width: 70px
+	height: 4px
+	background-color: #fff
+	margin-right: 10px
+	outline: none
+	opacity: 0.8
+	-webkit-appearance: none
+	background: linear-gradient(to right, #fff 0%, #fff 54%, rgba(255,255,255, .5)54%, rgba(255,255,255, .5) 100%)
+
+
+.sound-volume::-webkit-slider-thumb 
+	width: 11px
+	height: 11px
+	border-radius: 50%
+	-webkit-appearance: none
+	background: #fff
+	cursor: pointer
+
+
+.play
+  &-list 
+    width: fit-content
+    text-align: left
+  &-item 
+    position: relative
+    padding: 5px
+    padding-left: 25px
+    list-style: none
+    opacity: 0.8
+    cursor: pointer
+    transition: 0.3s
+    &:hover 
+      opacity: 1
+    &::before 
+      content: ""
+      background-image: url(../assets/svg/play.svg)
+      position: absolute
+      left: 0
+      top: 2px
+      width: 20px
+      height: 20px
+      align-items: center
+      background-repeat: no-repeat
+      background-position: center
+      background-color: transparent
+      background-size: contain
+      opacity: 0.8
+      transition: 0.3s
+      cursor: pointer
+
+.item-active 
+  color: $main-color
+  &::before 
+    background-image: url(../assets/svg/pause.svg)
+
+.paused::before 
+	background-image: url(../assets/svg/play.svg)
+
+.player-icon,
+.slider-icon,
+.change-quote 
+	width: 32px
+	height: 32px
+	background-size: 32px 32px
+	background-position: center center
+	background-repeat: no-repeat
+	background-color: transparent
+	border: 0
+	outline: 0
+	opacity: 0.8
+	cursor: pointer
+	transition: 0.3s
+
+.player-icon:hover,
+.slider-icon:hover,
+.change-quote:hover,
+.mute-button:hover 
+	opacity: 1
+
+.player-icon:active,
+.slider-icon:active,
+.change-quote:active,
+.mute-button:active 
+	border: 0
+	outline: 0
+	transform: scale(1.1)
+
+.play 
+	width: 40px
+	height: 40px
+	background-size: 40px 40px
+	background-image: url("../assets/svg/play.svg")
+
+.pause 
+	background-image: url("../assets/svg/pause.svg")
+
+.play-prev 
+	background-image: url("../assets/svg/play-prev.svg")
+
+.play-next 
+	background-image: url("../assets/svg/play-next.svg")
+
+.weather 
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  align-items: flex-start
+  row-gap: 5px
+  width: 180px
+  min-height: 180px
+  text-align: left
+  &-error 
+    margin-top: -10px
+  &-icon 
+    font-size: 44px
+
+.description-container 
+	display: flex
+	flex-wrap: wrap
+	justify-content: flex-start
+	align-items: center
+	column-gap: 12px
+
+.city 
+  width: 170px
+  height: 34px
+  padding: 5px
+  font-size: 20px
+  line-height: 24px
+  color: #fff
+  border: 0
+  outline: 0
+  border-bottom: 1px solid #fff
+  background-color: transparent
+  &::placeholder 
+    font-size: 20px
+    color: #fff
+    opacity: 0.6
+
+.main 
+	position: relative
+	display: flex
+	flex-direction: column
+	justify-content: center
+	align-items: center
+	width: 100%
+	height: 40vh
+	min-height: 260px
+	padding: 20px
+
+.slider-icon 
+	position: absolute
+	top: 50%
+	margin-top: -16px
+	cursor: pointer
+
+.slide
+  &-prev 
+    left: 20px
+    background-image: url("../assets/svg/slider-prev.svg")
+  &-next 
+    right: 20px
+    background-image: url("../assets/svg/slider-next.svg")
+
+.time 
+	min-height: 124px
+	margin-bottom: 10px
+	font-family: "Arial-MT"
+	font-size: 100px
+	letter-spacing: -4px
+
+.date 
+	min-height: 28px
+	font-size: 24px
+	margin-bottom: 20px
+
+.greeting
+  flex: 1
+  padding: 10px
+  text-align: right
+  &-container
+    display: flex
+    flex-wrap: wrap
+    justify-content: stretch
+    align-items: center
+    min-height: 48px
+    width: 100%
+    font-size: 40px
+
+.name 
+  flex: 1
+  max-width: 50%
+  padding: 10px
+  font-size: 40px
+  text-align: left
+  color: #fff
+  background-color: transparent
+  border: 0
+  outline: 0
+  &::placeholder 
+    color: #fff
+    opacity: 0.6
+
+.footer 
+	display: flex
+	flex-direction: column
+	justify-content: flex-end
+	align-items: center
+	width: 100%
+	height: 30vh
+	min-height: 160px
+	padding: 20px
+
+.upper 
+	width: 100%
+	display: flex
+	align-items: center
+	justify-content: space-between
+	padding-bottom: 20px
+
+.settings
+  width: 32px
+  height: 32px
+  background-image: url("../assets/svg/settings.svg")
+  align-items: center
+  background-repeat: no-repeat
+  background-position: center
+  background-color: transparent
+  background-size: contain
+  border: 0
+  outline: 0
+  opacity: 0.8
+  transition: 0.3s
+  cursor: pointer
+  &:hover
+    opacity: 1
+  &-wrapper 
+    position: relative
+    width: 92px
+    text-align: left
+  &-modal 
+    background: rgba(255, 255, 255, 0.7)
+    border-radius: 5px
+    overflow-x: hidden
+    overflow-y: auto
+    text-align: left
+    text-shadow: none
+    transition: 0.5s
+    pointer-events: none
+    color: #222
+    display: flex
+    flex-direction: column
+    opacity: 0
+    position: absolute
+    bottom: 45px
+    left: 7px
+    height: 520px
+    width: 300px
+    padding: 20px
+    z-index: 1
+  &-title 
+    margin: 0 auto
+    padding-bottom: 15px
+    &.show
+      padding-top: 15px
+      padding-bottom: 0
+    &.bg-img 
+      padding-top: 5px
+      padding-bottom: 5px
+      margin: 0 auto
+
+.settings.open 
+  opacity: 1
+  transform: rotate(38deg) scale(1.1)
+.settings-modal.open
+  opacity: 1
+  pointer-events: auto
+
+.set 
+  padding: 7px 0
+  display: flex
+  justify-content: space-between
+  align-items: center
+  border-bottom: 1px solid #c3c3c3
+  &.bg-image 
+    display: flex
+    flex-direction: column
+
+.bg
+  &-item 
+    display: flex
+    align-items: center
+    justify-content: space-between
+    width: 100%
+  &-tags 
+    font-size: 16px
+    width: 150px
+    height: 36px
+    border: 1px solid #c3c3c3
+    border-radius: 0
+    padding: 5px
+    background-color: transparent
+    &:focus-visible 
+      font-size: 16px
+      outline: none
+      border-radius: 0
+
+
+.lang
+  &-wrapper 
+    display: flex
+    justify-content: space-between
+    align-items: center
+  &-check-title 
+    font-size: 12px
+  &-eng 
+    padding-left: 5px
+    width: 35.5px
+  &-ru 
+    padding-right: 5px
+
+
+.custom
+  &-select 
+    margin: 7px 0
+    position: relative
+    font-family: Arial
+    width: 150px
+    select 
+      display: none
+
+.select
+  &-selected 
+    background-color: $main-color
+    &:after 
+      position: absolute
+      content: ""
+      top: 14px
+      right: 10px
+      width: 0
+      height: 0
+      border: 6px solid transparent
+      border-color: #fff transparent transparent transparent
+    .select-arrow-active:after 
+      border-color: transparent transparent #fff transparent
+      top: 7px
+  &-items div,&-selected 
+    color: #ffffff
+    padding: 8px 16px
+    border: 1px solid transparent
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent
+    cursor: pointer
+    user-select: none
+  &-items 
+    position: absolute
+    background-color: $main-color
+    top: 100%
+    left: 0
+    right: 0
+    z-index: 99
+  &-hide 
+    display: none
+
+.select-items div:hover,
+.same-as-selected 
+	background-color: rgba(0, 0, 0, 0.1)
+
+.switch 
+  position: relative
+  display: inline-block
+  width: 30px
+  height: 17px
+  input 
+    display: none
+
+.slider 
+  position: absolute
+  cursor: pointer
+  top: 0
+  left: 0
+  right: 0
+  bottom: 0
+  background-color: #ccc
+  border-radius: 34px
+  -webkit-transition: 0.4s
+  transition: 0.4s
+  &.lang 
+    background-color: $main-color
+  &:before 
+    position: absolute
+    content: ""
+    height: 13px
+    width: 13px
+    left: 2px
+    bottom: 2px
+    background-color: white
+    border-radius: 50%
+    -webkit-transition: 0.4s
+    transition: 0.4s
+
+input:checked + .slider 
+	background-color: $main-color
+input:focus + .slider 
+	box-shadow: 0 0 1px $main-color
+input:checked + .slider:before 
+	-webkit-transform: translateX(13px)
+	-ms-transform: translateX(13px)
+	transform: translateX(13px)
+
+.error 
+	height: 17px
+	padding-top: 3px
+	font-size: 12px
+	color: #775c60
+
+.quote
+  min-height: 32px
+  &-wrapper 
+    width: 90%
+    display: flex
+    flex-direction: column
+    justify-content: flex-end
+    align-items: center
+
+.change-quote 
+	margin-bottom: 30px
+	background-image: url("../assets/svg/reload.svg")
+
+.author 
+	min-height: 20px
+
+.todo
+  font-size: 16px
+  font-weight: 600
+  color: #fff
+  width: 92px
+  height: 32px
+  align-items: center
+  text-align: right
+  background-repeat: no-repeat
+  background-position: center
+  background-color: transparent
+  border: 0
+  outline: 0
+  opacity: 0.8
+  transition: 0.3s
+  cursor: pointer
+  &-wrapper 
+    position: relative
+    opacity: 1
+    pointer-events: all
+    transition: 0.5s
+  &:hover 
+    opacity: 1
+  &:active 
+    opacity: 1
+  &-modal 
+    color: #222
+    display: flex
+    flex-direction: column
+    opacity: 0
+    position: absolute
+    bottom: 45px
+    right: 7px
+    height: 490px
+    width: 300px
+    padding: 20px
+    z-index: 1
+    background: rgba(255, 255, 255, 0.7)
+    border-radius: 5px
+    overflow-x: hidden
+    text-align: left
+    text-shadow: none
+    transition: 0.5s
+    pointer-events: none
+  &-modal.open 
+    opacity: 1
+    pointer-events: auto
+  &-input 
+    font-size: 16px
+    width: 100%
+    height: 36px
+    border: 1px solid #c3c3c3
+    border-radius: 0
+    padding: 5px
+    background-color: transparent
+    &:focus-visible 
+      font-size: 16px
+      outline: none
+      border-radius: 0
+
+.todos 
+  list-style-type: none
+  margin: 0
+  padding: 0
+  overflow-x: hidden
+  overflow-y: auto
+  min-height: 325px
+  li 
+    background: #f7f7f7
+    height: 50px
+    line-height: 50px
+    cursor: pointer
+    font-size: 16px
+    display: flex
+    justify-content: space-between
+    span.todo-text 
+      padding: 0 8px
+    &:nth-child(2n) 
+      background: #edf1f5
+    &:hover span.todo-trash 
+      width: 50px
+      opacity: 1
+
+.fa-trash-alt 
+	color: $main-color
+
+.todo
+  &-trash 
+    text-align: center
+    height: 50px
+    width: 50px
+    opacity: 0
+    -webkit-transition: 0.3s
+    transition: 0.3s linear
+  &-btn 
+    background-color: $main-color
+    border: 2px solid $main-color
+    width: 120px
+    color: white
+    padding: 8px 20px
+    text-align: center
+    text-decoration: none
+    display: inline-block
+    font-size: 16px
+    border-radius: 4px
+    -webkit-transition-duration: 0.4s
+    transition-duration: 0.4s
+    cursor: pointer
+    &:hover 
+      background-color: white
+      color: #222
+      border: 2px solid $main-color
+  &-text 
+    pointer-events: none
+i 
+	cursor: pointer
+	pointer-events: none
+
+#buttons 
+	padding-top: 15px
+	display: flex
+	justify-content: space-between
+
+.checked 
+	color: gray
+	text-decoration: line-through
+
+.lower 
+	font-size: 12px
+	width: 100%
+	display: flex
+	justify-content: space-between
+
+.github > a 
+  display: flex
+  color: #fff
+  opacity: 0.8
+  text-decoration: none
+  font-size: 20px
+  &:hover 
+    opacity: 1
+
+.git-logo 
+	margin-right: 5px
+	width: 20px
+	height: 20px
+	background-image: url("../assets/svg/github.png")
+	align-items: center
+	background-repeat: no-repeat
+	background-position: center
+	background-color: transparent
+	background-size: contain
+
+.rss 
+  position: relative
+  width: 53px
+  &-logo 
+    position: absolute
+    bottom: 0
+    right: 0
+    width: 60px
+    height: 30px
+    background-image: url('../assets/svg/rss.svg')
+    align-items: center
+    background-repeat: no-repeat
+    background-position: center
+    background-color: transparent
+    background-size: contain
+    transition: 0.3s
+    opacity: 0.8
+    &:hover 
+      opacity: 1
+
+.player,
+.weather,
+.date,
+.time,
+.greeting-container,
+.quote-wrapper 
+	opacity: 1
+	pointer-events: auto
+	transition: 0.5s
+
+.player.hide,
+.weather.hide,
+.date.hide,
+.time.hide,
+.greeting-container.hide,
+.quote-wrapper.hide,
+.todo-wrapper.hide 
+	opacity: 0
+	pointer-events: none
+	transition: 0.5s
+
+
+@media (max-width: 768px) 
+	.time 
+		min-height: 80px
+		font-size: 72px
+
+	.greeting
+    padding: 5px
+    &-container 
+      min-height: 40px
+      font-size: 32px
+
+	.name 
+		font-size: 32px
+		padding: 5px
+
+	.player
+    &-info 
+      flex-direction: column
+    &-title 
+      text-align: left
+      padding-bottom: 5px
+
+	.player-controls,
+	.progress,
+	.volume 
+		margin-bottom: 0
+	
+	.progress 
+		min-height: 30px
+		flex-direction: column
+		align-items: flex-start
+	
+	.duration
+    &-player 
+      margin: 10px 0 0 0
+      min-width: 120px
+    &-timer 
+      font-size: 10px
+      padding-left: 30px
+	
+	.timer:after 
+		font-size: 10px
+	
+	.mute-button 
+		margin: 0 3px 3px 0
+	
+	.sound-volume 
+		width: 95px
+		margin-left: 10px
+		margin-right: 0
+	
+
+@media (max-width: 479px) 
+	body 
+		font-size: 12px
+		min-width: 320px
+	
+	.time 
+		min-height: 80px
+		font-size: 56px
+	
+	.greeting 
+		font-size: 20px
+		padding: 5px
+	.name 
+		font-size: 20px
+		padding: 5px
+	
+	.weather 
+		width: 125px
+	
+	.city
+    width: 125px
+    font-size: 16px
+    &::placeholder 
+      font-size: 16px
+
+	.todo 
+		font-size: 12px
+	
+	.date 
+		font-size: 18px
+	
+	.settings
+    &-modal 
+      width: 270px
+      height: 480px
+      padding: 10px
+    &-wrapper 
+      width: 50px
+	
+	.todo
+    width: 50px
+    &-modal 
+      padding: 10px
+      width: 270px
+
+	.footer 
+		padding: 10px
+
+

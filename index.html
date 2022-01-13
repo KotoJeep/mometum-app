@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" />
+		<link href="assets/favicon.ico" rel="shortcut icon" />
+		<link rel="stylesheet" href="css/owfont-regular.css" />
+		<link rel="stylesheet" href="css/style.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/i18next/2.0.22/i18next.min.js"></script>
+		<title>momentum</title>
+	</head>
+	<body>
+		<header class="header">
+			<div class="player hide">
+				<div class="player-title"></div>
+				<div class="player-info">
+					<div class="player-controls">
+						<button class="play-prev player-icon"></button>
+						<button class="play player-icon"></button>
+						<button class="play-next player-icon"></button>
+					</div>
+					<div class="progress">
+						<input type="range" class="duration-player" />
+						<div class="duration-timer">
+							<div id="timer" class="timer">00:00</div>
+							<div id="duration">00:39</div>
+						</div>
+					</div>
+					<div class="volume">
+						<div class="mute-button"></div>
+						<input type="range" class="sound-volume" />
+					</div>
+				</div>
+				<ul class="play-list"></ul>
+			</div>
+			<div class="weather hide">
+				<input type="text" class="city" />
+				<i class="weather-icon owf"></i>
+				<div class="weather-error"></div>
+				<div class="description-container">
+					<span class="temperature"></span>
+					<span class="weather-description"></span>
+				</div>
+				<div class="wind"></div>
+				<div class="humidity"></div>
+			</div>
+		</header>
+		<main class="main">
+			<div class="slider-icons">
+				<button class="slide-prev slider-icon"></button>
+				<button class="slide-next slider-icon"></button>
+			</div>
+			<time class="time hide"></time>
+			<date class="date hide"></date>
+			<div class="greeting-container hide">
+				<span class="greeting"></span>
+				<input type="text" class="name" />
+			</div>
+		</main>
+		<footer class="footer">
+			<div class="upper">
+				<div class="settings-wrapper">
+					<button class="settings"></button>
+					<div class="settings-modal">
+						<h3 class="settings-title settings-field-title">Settings</h3>
+						<div class="set lang">
+							<span class="set-time-title" id="lang-title">Language</span>
+							<div class="lang-wrapper">
+								<span class="lang-check-title lang-ru">RU</span>
+								<label class="switch">
+									<input class="lang-btn" type="checkbox" checked />
+									<span class="slider lang"></span>
+								</label>
+								<span class="lang-check-title lang-eng">ENG</span>
+							</div>
+						</div>
+						<div class="set bg-image">
+							<h4 class="settings-title bg-img">Background image</h4>
+							<div class="bg-item">
+								<span class="set-bg-title" id="bg-source">Source</span>
+								<div class="custom-select">
+									<select>
+										<option value="1">GitHub</option>
+										<option value="2">Unsplash API</option>
+										<option value="3">Flickr API</option>
+									</select>
+								</div>
+							</div>
+							<div class="bg-item">
+								<span class="set-bg-title" id="bg-tags-title">Tags for API</span>
+								<input class="bg-tags" type="text" placeholder="nature, morning" title="Tags separated by comma" />
+							</div>
+							<span class="error"></span>
+						</div>
+						<h4 class="settings-title show">Show</h4>
+						<div class="set">
+							<span class="set-time-title" id="time-title">Time</span>
+							<label class="switch">
+								<input class="show-time" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="set">
+							<span class="set-date-title">Date</span>
+							<label class="switch">
+								<input class="show-date" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="set">
+							<span class="set-greeting-title">Greeting</span>
+							<label class="switch">
+								<input class="show-greeting" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="set">
+							<span class="set-quotes-title">Quotes</span>
+							<label class="switch">
+								<input class="show-quotes" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="set">
+							<span class="set-weather-title">Weather</span>
+							<label class="switch">
+								<input class="show-weather" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="set">
+							<span class="set-audio-title">Audio Player</span>
+							<label class="switch">
+								<input class="show-audio" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+						<div class="set">
+							<span class="set-todo-title">To-Do List</span>
+							<label class="switch">
+								<input class="show-todo" type="checkbox" checked />
+								<span class="slider"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<div class="quote-wrapper hide">
+					<button class="change-quote"></button>
+					<div class="quote"></div>
+					<div class="author"></div>
+				</div>
+				<div class="todo-wrapper hide">
+					<button class="todo">TODO</button>
+					<div class="todo-modal">
+						<h3 class="settings-title todo-field-title">To-Do List</h3>
+						<input class="todo-input" type="text" placeholder="Add New To-Do" />
+						<ul class="todos">
+							<li>
+								<span class="todo-text">Check this todo</span><span class="todo-trash"><i class="fas fa-trash-alt"></i></span>
+							</li>
+							<li>
+								<span class="todo-text">Add a new todo</span><span class="todo-trash"><i class="fas fa-trash-alt"></i></span>
+							</li>
+							<li>
+								<span class="todo-text">Try to delete</span><span class="todo-trash"><i class="fas fa-trash-alt"></i></span>
+							</li>
+							<li>
+								<span class="todo-text">Check all todos</span><span class="todo-trash"><i class="fas fa-trash-alt"></i></span>
+							</li>
+							<li>
+								<span class="todo-text">Clear all todos</span><span class="todo-trash"><i class="fas fa-trash-alt"></i></span>
+							</li>
+							<li>
+								<span class="todo-text">Try to reload page</span><span class="todo-trash"><i class="fas fa-trash-alt"></i></span>
+							</li>
+						</ul>
+						<div id="buttons">
+							<button class="todo-btn check-all">Add Done</button>
+							<button class="todo-btn clear">Clear</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="lower">
+				<div class="github">
+					<a href="https://github.com/KotoJeep" target="_blank"> github </a>
+				</div>
+				<div class="year">2021</div>
+				<div class="rss">
+					<a href="https://rs.school/" target="_blank">
+						<div class="rss-logo"></div>
+					</a>
+				</div>
+			</div>
+		</footer>
+		<script src="app.js"></script>
+	</body>
+</html>
